@@ -22,12 +22,13 @@
         "jquery-touch-events": "^1.0.7",
         "jquery-validation": "^1.17.0",
         "mobile-detect": "^1.3.6",
-        "perfect-scrollbar": "0.8.1",
+        "node-gyp": "^3.6.2",
+        "perfect-scrollbar": "^0.8.1",
         "sass-semantic-ui": "^2.2.12-3",
         "semantic-ui-calendar": "0.0.8",
         "slick-carousel": "^1.7.1",
-        "sweetalert2": "^6.11.5",
-        "toastr": "^2.1.2"
+        "sweetalert2": "^6.6.9",
+        "toastr": "^2.1.4"
     },
     "devDependencies": {
         "browser-sync": "^2.18.13",

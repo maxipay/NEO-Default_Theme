@@ -1,3 +1,8 @@
+.bg-footer {
+	background: url('/assets/image/footer.jpg') no-repeat;
+	background-size: cover;
+}
+
 .footer-wrap{
 	position: absolute;
 	bottom: 0px;
@@ -65,4 +70,13 @@
         fill: rgba(228, 25, 32, 1);
     }
 }
-  
+
+#email_news {
+  width: 100% !important;
+}
+
+.icon.newsletter {
+	font-size: 3rem !important;
+  position: relative;
+  top: 10px;
+}

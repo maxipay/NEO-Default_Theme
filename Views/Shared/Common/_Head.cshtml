@@ -5,12 +5,12 @@
     <div class="ui container">
         <div class="ui middle aligned three column centered grid">
             <div class="row">
-                <div class="ui ten wide mobile six wide tablet four wide computer column">
+                <div class="ui ten wide mobile four wide tablet four wide computer column">
                     <a href="@(Session["idEventList"] == null ? "/Home" : "#")">
                         <img class="ui middle aligned image" src="/assets/image/logo/logo.png" alt="">
                     </a>
                 </div>
-                <div class="ui center aligned five wide tablet eight wide computer column searchcolumn">
+                <div class="ui center aligned five wide tablet four wide computer column searchcolumn">
                     <div class="ui category @_classSearch">
                         <div class="ui icon input fluid">
                             <input class="prompt" type="text" placeholder="Buscar...">
@@ -19,13 +19,27 @@
                         <div class="results"></div>
                     </div>
                 </div>
-                <div class="ui right aligned six wide mobile five wide tablet four wide computer column">
+                <div class="ui right aligned column two wide mobile two wide tablet four wide column">
+                  <div class="ui horizontal list">
+                    <span class="item">
+                      <a href="/fale-conosco"><i class="call square icon"></i>
+                      <span class="text">Fale Conosco</span></a>
+                    </span>
+                    <div class="item">
+                      <a href="/customer">
+                        <i class="user icon regular"></i>
+                        <span class="text">Minha Conta</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui right aligned six wide mobile five wide tablet two wide computer column">
                     <div id="cartButton" class="ui labeled button cartbutton mini-cart no margin bottom" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
-                        <div class="ui basic primary button ">
+                        <div class="ui basic secondary button ">
                             <i class="cart icon"></i>
-                            <span>@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")</span>
+                            <span class="hideme">@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")</span>
                         </div>
-                        <a class="ui left pointing primary label" id="total_itens_card">
+                        <a class="ui left pointing secondary label" id="total_itens_card">
                             @{
                                 if (Session["EventList"] == null)
                                 {
@@ -35,7 +49,7 @@
 	                                @Html.Action("TotalItensList", "EventList")
                                 }
                             }
-                            
+
                         </a>
                     </div>
                 </div>

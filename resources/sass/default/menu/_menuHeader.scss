@@ -3,6 +3,41 @@ $menuTextColor: $white;
 $menuHeight: 60px;
 $menuHoverBorderColor: $ascent-1-color;
 
+// #floating-left-menu {
+//   position: fixed;
+//   top: 12rem;
+//   left: 4rem;
+//   z-index: 99;
+//   display: none;
+// }
+#left-menu {
+  margin-top: 2rem;
+
+  .menu .item {
+    .header {
+      a {
+        color: rgb(41,148,4);
+      }
+      a:hover {
+        color: rgba(41,148,4, 0.8);
+      }
+    }
+
+    .menu .item {
+      a {
+        color: rgb(150, 150, 150);
+      }
+      a:hover {
+        color: rgba(41,148,4, 0.8);
+      }
+    }
+    }
+}
+
+.menu-icon {
+  margin-bottom: 0 !important;
+}
+
 .menuheader {
   background-color: $menuBG;
   min-height: $menuHeight;
@@ -29,9 +64,9 @@ $menuHoverBorderColor: $ascent-1-color;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-            
+
           }
-        
+
         > .icon.dropdown {
           line-height: 18px;
           }
@@ -55,7 +90,7 @@ $menuHoverBorderColor: $ascent-1-color;
           .menu {
             box-shadow: none;
             }
-            
+
           }
         }
       }

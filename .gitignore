@@ -288,6 +288,7 @@ __pycache__/
 *.xsd.cs
 
 NEO-DefaultTheme/node_modules
+NEO-DefaultTheme/node_modules/*
 NEO-DefaultTheme/assets/css/style.css
 NEO-DefaultTheme/assets/js/app.js
 NEO-DefaultTheme/assets/js/vendor.js

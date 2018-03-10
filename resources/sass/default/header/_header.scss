@@ -8,11 +8,19 @@ headlogo {
 }
 
 ._header {
-  background: rgb(255,255,255);
+  background: white;
   margin-top: 0px;
 
+  a {
+    color: grey !important;
+  }
+
+  a:hover {
+    color: #333 !important;
+  }
+
   &.fixed{
-  box-shadow: rgba(0,0,0,.3) 0px 0px 10px 0px;
+    box-shadow: rgba(0,0,0,.3) 0px 0px 10px 0px;
   }
 
   .ui.container {
@@ -41,6 +49,25 @@ headlogo {
         @media screen and (max-width: $mobile-bp){
           display: none;
         }
+      }
+    }
+
+    @media screen and (max-width: $mobile-bp) {
+      position: absolute;
+      top: 1.5rem;
+      right: -7rem;
+    }
+  }
+
+  .ui.horizontal.list {
+    span.text,
+    .menu {
+      @media screen and (max-width: $mobile-bp) {
+        display: none;
+      }
+
+      @media screen and (max-width: $tablet-bp-max) {
+        display: none;
       }
     }
   }

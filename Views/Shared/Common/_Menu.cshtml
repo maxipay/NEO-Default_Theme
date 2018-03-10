@@ -21,6 +21,7 @@
                         {
                             <li>
                                 <a href="@category.UrlFriendly" class="item">
+                                    <img class="ui image left floated menu-icon" src="@category.Image" />
                                     <span class="text">@category.Name</span>
                                     @if (category.ChildCategories != null && category.ChildCategories.Any())
                                     {
@@ -55,11 +56,11 @@
                                                         }
                                                     </div>
                                                 </div>
-                                                <div class="four wide tablet four wide computer column mobile-hide">
+                                                @* <div class="four wide tablet four wide computer column mobile-hide">
                                                     <a href="@category.UrlFriendly">
                                                         <img class="ui image" src="@category.Image" />
                                                     </a>
-                                                </div>
+                                                </div> *@
                                             </div>
                                         </div>
                                     </div>
@@ -78,3 +79,110 @@
         </div>
     </div>
 </div>
+
+<script text="text/javascript">
+$(function () {
+  var Categories = @Html.Raw(Json.Encode(Model));
+  var resultHtml = "";
+
+  for (var i=0; i<Categories.length; i++) {
+    resultHtml +=
+    '<div class="ui vertical menu">' +
+      '<div class="item">' +
+        '<div class="header">' +
+          // '<a href=" ' + Categories[i].UrlFriendly + '">' +
+          //   '<img class="ui image left floated mini" src="' + Categories[i].Image + '" />' +
+          // '</a>' +
+          '<a href="' + Categories[i].UrlFriendly + '">' + Categories[i].Name + '</a>'
+    ;
+    if (Categories[i].ChildCategories.length > 0) {
+      resultHtml +=
+          '<div class="ui divider"></div>' +
+          '<div class="menu">'
+      ;
+      for (var j=0; j<Categories[i].ChildCategories.length; j++) {
+        resultHtml +=
+            '<div class="item">' +
+              '<a href="' + Categories[i].ChildCategories[j].UrlFriendly + '">' +
+                Categories[i].ChildCategories[j].Name + '</a>' +
+            '</div>'
+        ;
+      }
+      resultHtml +=
+            '</div>'
+      ;
+    }
+    resultHtml +=
+        '</div>' +
+      '</div>' +
+    '</div>'
+    ;
+  }
+
+  console.log(resultHtml);
+
+  $('#left-menu').html(resultHtml);
+  $('#left-menu').removeClass('hideme');
+});
+</script>
+
+@* <script type="text/javascript">
+  var Categories = [];
+  let index = 0;
+
+  @foreach (DomainProduct.Entities.Category category in Model) {
+    Categories[index] {
+      "name": "@category.Name"
+      "url": "@category.UrlFriendly"
+      "image_url": "@category.Image"
+      "children": []
+    }
+
+    @if (category.ChildCategories != null && category.ChildCategories.Any()) {
+      @foreach (DomainProduct.Entities.Category subCategoryLevel1 in category.ChildCategories) {
+        Categories[index].children.push({
+          "name": "@subCategoryLevel1.Name"
+          "url": "@subCategoryLevel1.UrlFriendly"
+        });
+      }
+    }
+    index++;
+  }
+</script> *@
+
+@* <div id="floating-left-menu">
+  @foreach (DomainProduct.Entities.Category category in Model) {
+    <div class="ui vertical menu">
+      <div class="item">
+        <div class="header">
+          <a href="@category.UrlFriendly"><span>@category.Name</span></a>
+          <a href="@category.UrlFriendly">
+              <img class="ui image" src="@category.Image" />
+          </a>
+        </div>
+        @if (category.ChildCategories != null && category.ChildCategories.Any()) {
+          <div class="menu">
+            @foreach (DomainProduct.Entities.Category subCategoryLevel1 in category.ChildCategories) {
+              <div class="item">
+                <a href="@subCategoryLevel1.UrlFriendly">@subCategoryLevel1.Name</a>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+  </div>
+</div> *@
+
+@* <script type="text/javascript">
+  $(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('#floating-left-menu').fadeIn();
+        } else {
+            $('#').fadeOut();
+        }
+      });
+  });
+</script> *@
