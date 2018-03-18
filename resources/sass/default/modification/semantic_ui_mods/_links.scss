@@ -1,0 +1,7 @@
+.ui.inverted.link.list {
+  .item,
+  a.item,
+  .item a:not(.ui) {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

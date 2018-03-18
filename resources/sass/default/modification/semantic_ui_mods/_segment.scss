@@ -1,5 +1,9 @@
 .ui.segment {
 	&.basic {
-	  border: 0px !important;;
+	  border: 0px !important;
 	}
-  }
+}
+
+.ui.inverted.segment {
+	background: none;
+}
