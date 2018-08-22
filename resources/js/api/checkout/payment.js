@@ -249,51 +249,23 @@ function OrderCreate() {
                         userAgent         : userAgent
                     },
                     success: function (response) {
-                        if (response.success === true) 
-                        {
-                            if(response.errorMsg != ""){
-                                _alert("Ops! Encontramos um problema ..", response.errorMsg, "warning");
-                                $(".GerarPedido").removeClass("loading");
-                                $(".GerarPedido").removeClass("disabled");
-                            }
-                            else{
-                                if (response.urlRedirect != "") 
-                                {
-                                    window.location.href = response.urlRedirect;
-                                }
-                                else 
-                                {
-                                    if(response.urlBoleto != "")
-                                    {
-                                        window.location.href = "Success?orderId=" + response.idPedido + "&b=" + response.urlBoleto;
-                                        //window.location.href = "Success?orderId=" + response.idPedido;
-                                    }
-                                    else{
-                                        window.location.href = "Success?orderId=" + response.idPedido;
-                                    }
-                                }
-                            }
-                        } 
-                        else 
-                        {
-                            if (response.showMessage) {
-                                swal({
-                                    title: '',
-                                    html: response.msg,
-                                    type: 'warning',
-                                    showCancelButton: false,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'OK'
-                                });
-
-                                $(".GerarPedido").removeClass("loading");
-                                $(".GerarPedido").removeClass("disabled")
-                            }
-                            else {
-                                window.location.href = "Success?orderId=" + response.idPedido + "&s="+response.success+"&m="+response.msgEncrypt;
-                            }
+                      if(response.success == true){
+                        if(response.urlRedirect != "" && response.urlRedirect !== null){
+                            window.location.href = response.urlRedirect;
+                        }else if(response.idPedido != "" && response.idPedido !== null && response.msgEncrypt != ""){
+                            window.location.href = "Success?orderId=" + response.idPedido+ "&s="+response.success+"&m="+response.msgEncrypt;
+                        }else if(response.idPedido != "" && response.idPedido !== null){
+                            window.location.href = "Success?orderId=" + response.idPedido+ "&s="+response.success;
+                        }else {
+                          _alert("Transação não autorizada!", response.msg, "error");
+                          $(".GerarPedido").removeClass("loading");
+                          $(".GerarPedido").removeClass("disabled");
                         }
+                      }else{
+                        _alert("Transação não autorizada!", response.msg, "error");
+                        $(".GerarPedido").removeClass("loading");
+                        $(".GerarPedido").removeClass("disabled");
+                      }
                     }
                 });
             } 
